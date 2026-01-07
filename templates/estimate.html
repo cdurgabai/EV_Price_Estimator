@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% block title %}Estimate Price{% endblock %}
+{% block content %}
+<section class="form-section">
+    <div class="form-card">
+        <h2 class="text-center mb-4">EV Price Estimation</h2>
+
+        <form method="POST" action="{{ url_for('predict') }}">
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <label class="form-label">Make</label>
+                    <select name="make" id="makeSelect" class="form-select" required>
+                        <option selected disabled>Choose Make</option>
+                        {% for val in makes %}
+                            <option value="{{ val }}">{{ val }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Model</label>
+                    <select name="model" id="modelSelect" class="form-select" required>
+                        <option selected disabled>Select Make First</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Model Year</label>
+                    <select name="model_year" class="form-select" required>
+                        <option selected disabled>Choose Year</option>
+                        {% for year in model_years %}
+                            <option value="{{ year }}">{{ year }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Electric Range ({{ range_min }} - {{ range_max }} miles)</label>
+                    <input type="number" name="electric_range" class="form-control" min="{{ range_min }}" max="{{ range_max }}" required>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Base MSRP (${{ msrp_min }} - ${{ msrp_max }})</label>
+                    <input type="number" name="base_msrp" class="form-control" min="{{ msrp_min }}" max="{{ msrp_max }}" step="0.01" required>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">EV Type</label>
+                    <select name="ev_type" class="form-select" required>
+                        <option selected disabled>Choose EV Type</option>
+                        {% for val in ev_types %}
+                            <option value="{{ val }}">{{ val }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">CAFV Eligibility</label>
+                    <select name="cafv" class="form-select" required>
+                        <option selected disabled>Choose CAFV Eligibility</option>
+                        {% for val in cafv_options %}
+                            <option value="{{ val }}">{{ val }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">City</label>
+                    <select name="city" class="form-select" required>
+                        <option selected disabled>Choose City</option>
+                        {% for val in cities %}
+                            <option value="{{ val }}">{{ val }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Electric Utility</label>
+                    <select name="utility" class="form-select" required>
+                        <option selected disabled>Choose Utility</option>
+                        {% for val in utilities %}
+                            <option value="{{ val }}">{{ val }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label">Prediction Algorithm</label>
+                    <select name="algorithm" class="form-select" required>
+                        <option selected disabled>Choose Algorithm</option>
+                        <option value="random_forest">Random Forest</option>
+                        <option value="gradient_boosting">Gradient Boosting</option>
+                    </select>
+                </div>
+
+                <div class="col-12 text-center mt-4">
+                    <button type="submit" class="cta-button">Estimate Price</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+<script>
+document.getElementById('makeSelect').addEventListener('change', function() {
+    const make = this.value;
+    const modelSelect = document.getElementById('modelSelect');
+    modelSelect.innerHTML = '<option disabled selected>Loading...</option>';
+
+    fetch('/get_models', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ make: make })
+    })
+    .then(response => response.json())
+    .then(models => {
+        modelSelect.innerHTML = '<option disabled selected>Choose Model</option>';
+        models.forEach(model => {
+            const option = document.createElement('option');
+            option.value = model;
+            option.textContent = model;
+            modelSelect.appendChild(option);
+        });
+    })
+    .catch(error => {
+        console.error('Error loading models:', error);
+        modelSelect.innerHTML = '<option disabled selected>Error loading models</option>';
+    });
+});
+</script>
+{% endblock %} 

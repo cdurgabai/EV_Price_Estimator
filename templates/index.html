@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="py-5 text-white text-center" style="background: linear-gradient(to right, #2193b0, #6dd5ed);">
+  <div class="container">
+    <h1 class="display-4 fw-bold mb-3">EV Price Estimator</h1>
+    <p class="lead mb-2">Unlock accurate and data-driven electric vehicle price predictions using machine learning.</p>
+    <p class="lead">Analyze battery specs, performance, and market trends to get comprehensive pricing insights.</p>
+    <a href="{{ url_for('estimate') }}" class="btn btn-light btn-lg mt-4 fw-semibold shadow-sm">Start Estimation</a>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold">Why Choose Us?</h2>
+      <p class="text-muted">Explore our features that deliver unmatched EV price estimation accuracy.</p>
+    </div>
+    <div class="row g-4">
+      <!-- Feature Card 1 -->
+      <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm text-center p-4">
+          <div class="display-4 mb-3 text-primary">📊</div>
+          <h5 class="fw-semibold mb-2">Accurate Predictions</h5>
+          <p class="text-muted">Leverage machine learning to generate precise pricing based on real-world EV data.</p>
+        </div>
+      </div>
+      <!-- Feature Card 2 -->
+      <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm text-center p-4">
+          <div class="display-4 mb-3 text-success">🔋</div>
+          <h5 class="fw-semibold mb-2">Comprehensive Analysis</h5>
+          <p class="text-muted">Evaluate specs like battery range, performance metrics, and energy consumption for full transparency.</p>
+        </div>
+      </div>
+      <!-- Feature Card 3 -->
+      <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm text-center p-4">
+          <div class="display-4 mb-3 text-info">📈</div>
+          <h5 class="fw-semibold mb-2">Market Insights</h5>
+          <p class="text-muted">Stay ahead with EV trends, resale value projections, and price shift analysis across markets.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_head %}
+<!-- Add Bootstrap if not already included -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block extra_scripts %}
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}

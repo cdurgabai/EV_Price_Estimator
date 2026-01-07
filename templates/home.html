@@ -1,0 +1,262 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="hero-section">
+    <div class="hero-content">
+        <h1>EV Price Estimator</h1>
+        <p>Welcome to our advanced Electric Vehicle Price Estimation platform. Using cutting-edge machine learning algorithms, we help you accurately predict the market value of electric vehicles based on their specifications and features.</p>
+        <p class="sub-text">Our system analyzes multiple factors including battery capacity, range, performance metrics, and market trends to provide you with precise price estimates for both new and used electric vehicles.</p>
+        <a href="{{ url_for('estimate') }}" class="cta-button">Start Estimation</a>
+    </div>
+</div>
+
+<div class="features-section">
+    <div class="container">
+        <div class="features-grid">
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-icon">
+                    <img src="{{ url_for('static', filename='images/chart-icon.svg') }}" alt="Chart Icon">
+                </div>
+                <h3>Accurate Predictions</h3>
+                <p>Our ML model is trained on extensive EV market data to provide highly accurate price estimates.</p>
+            </div>
+
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-icon">
+                    <img src="{{ url_for('static', filename='images/analysis-icon.svg') }}" alt="Analysis Icon">
+                </div>
+                <h3>Comprehensive Analysis</h3>
+                <p>Takes into account battery specs, range, performance, and market conditions.</p>
+            </div>
+
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-icon">
+                    <img src="{{ url_for('static', filename='images/insights-icon.svg') }}" alt="Insights Icon">
+                </div>
+                <h3>Market Insights</h3>
+                <p>Get detailed reports and market comparisons for better decision making.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="trends-section">
+    <div class="container">
+        <div class="welcome-trends" data-aos="fade-up">
+            <h2 class="section-title">Future Trends in EV Pricing</h2>
+            <div class="trends-welcome-content" data-aos="fade-up" data-aos-delay="200">
+                <div class="trends-image">
+                    <img src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="EV Future">
+                </div>
+                <div class="trend-highlights">
+                    <div class="highlight-item" data-aos="fade-right" data-aos-delay="400">
+                        <span class="highlight-number">2025</span>
+                        <span class="highlight-text">Projected market expansion</span>
+                    </div>
+                    <div class="highlight-item" data-aos="fade-right" data-aos-delay="600">
+                        <span class="highlight-number">30%</span>
+                        <span class="highlight-text">Expected cost reduction</span>
+                    </div>
+                    <div class="highlight-item" data-aos="fade-right" data-aos-delay="800">
+                        <span class="highlight-number">2X</span>
+                        <span class="highlight-text">Market growth rate</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="analysis-section" data-aos="fade-up">
+    <div class="container">
+        <h2 class="section-title">Our Analysis Methods</h2>
+        
+        <div class="analysis-cards">
+            <div class="analysis-card" data-aos="fade-right" data-aos-delay="100">
+                <h3>Linear Regression</h3>
+                <p>Traditional statistical approach for baseline price predictions.</p>
+                <ul>
+                    <li>Simple and interpretable results</li>
+                    <li>Good for understanding feature importance</li>
+                    <li>Establishes pricing baselines</li>
+                </ul>
+            </div>
+
+            <div class="analysis-card" data-aos="fade-up" data-aos-delay="200">
+                <h3>Random Forest</h3>
+                <p>Ensemble learning method for robust predictions.</p>
+                <ul>
+                    <li>High accuracy in complex scenarios</li>
+                    <li>Handles non-linear relationships</li>
+                    <li>Resistant to outliers</li>
+                </ul>
+            </div>
+
+            <div class="analysis-card" data-aos="fade-left" data-aos-delay="300">
+                <h3>Gradient Boosting</h3>
+                <p>Advanced algorithm using XGBoost implementation.</p>
+                <ul>
+                    <li>Superior prediction accuracy</li>
+                    <li>Handles missing data well</li>
+                    <li>Optimized performance</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="insights-section" data-aos="fade-up">
+    <div class="container">
+        <h2 class="section-title">Market Insights</h2>
+        
+        <div class="insights-grid">
+            <div class="insight-card" data-aos="zoom-in" data-aos-delay="100">
+                <div class="insight-icon">📈</div>
+                <h3>Price Trends</h3>
+                <p>Analysis of historical price data reveals consistent patterns in EV market valuations.</p>
+            </div>
+
+            <div class="insight-card" data-aos="zoom-in" data-aos-delay="200">
+                <div class="insight-icon">🔋</div>
+                <h3>Battery Technology</h3>
+                <p>Battery costs continue to decrease, directly impacting vehicle prices.</p>
+            </div>
+
+            <div class="insight-card" data-aos="zoom-in" data-aos-delay="300">
+                <div class="insight-icon">🌍</div>
+                <h3>Market Growth</h3>
+                <p>Global EV adoption rates show steady increase year over year.</p>
+            </div>
+
+            <div class="insight-card" data-aos="zoom-in" data-aos-delay="400">
+                <div class="insight-icon">💡</div>
+                <h3>Innovation Impact</h3>
+                <p>Technological advances continue to drive down manufacturing costs.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_head %}
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<style>
+    .hero-section {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        color: white;
+        text-align: center;
+    }
+
+    .hero-content {
+        max-width: 800px;
+        padding: 2rem;
+        z-index: 1;
+    }
+
+    .hero-content h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
+        font-weight: 700;
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+    }
+
+    .sub-text {
+        font-size: 1.1rem;
+        opacity: 0.9;
+    }
+
+    .cta-button {
+        display: inline-block;
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+        background: linear-gradient(45deg, #2193b0, #6dd5ed);
+        color: white;
+        text-decoration: none;
+        border-radius: 30px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin-top: 1rem;
+    }
+
+    .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(33, 147, 176, 0.4);
+        color: white;
+    }
+
+    .features-section {
+        padding: 5rem 0;
+        background: #f8f9fa;
+    }
+
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        padding: 0 1rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .feature-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-10px);
+    }
+
+    .feature-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 1.5rem;
+        padding: 1rem;
+        background: rgba(33, 147, 176, 0.1);
+        border-radius: 50%;
+    }
+
+    .feature-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .feature-card h3 {
+        color: #2193b0;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+    }
+
+    .feature-card p {
+        color: #4a5568;
+        line-height: 1.6;
+    }
+</style>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100
+    });
+</script>
+{% endblock %} 

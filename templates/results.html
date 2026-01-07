@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}Results{% endblock %}
+{% block content %}
+<section class="results-section">
+    <div class="results-card">
+        <h2 class="text-center mb-4">Price Estimation Results</h2>
+        
+        {% if prediction_text %}
+            <div class="prediction-result mb-4">
+                <div class="alert alert-success text-center">
+                    <h3 class="mb-0">{{ prediction_text }}</h3>
+                </div>
+            </div>
+
+            <div class="details-section mb-4">
+                <h4>Estimation Details</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="list-unstyled">
+                            <li><strong>Make:</strong> {{ form_data.make }}</li>
+                            <li><strong>Model:</strong> {{ form_data.model }}</li>
+                            <li><strong>Year:</strong> {{ form_data.model_year }}</li>
+                            <li><strong>Electric Range:</strong> {{ form_data.electric_range }} miles</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-unstyled">
+                            <li><strong>EV Type:</strong> {{ form_data.ev_type }}</li>
+                            <li><strong>CAFV Eligibility:</strong> {{ form_data.cafv }}</li>
+                            <li><strong>City:</strong> {{ form_data.city }}</li>
+                            <li><strong>Utility:</strong> {{ form_data.utility }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="{{ url_for('download_csv') }}" class="download-btn">
+                    <i class="fas fa-download me-2"></i>Download Results as CSV
+                </a>
+            </div>
+        {% else %}
+            <div class="alert alert-info text-center">
+                <p>No estimation results available. Please complete the estimation form first.</p>
+                <a href="{{ url_for('estimate') }}" class="cta-button mt-3">Go to Estimation Form</a>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+<style>
+.prediction-result h3 {
+    font-size: 1.8rem;
+    color: #2193b0;
+}
+
+.details-section {
+    background: rgba(33, 147, 176, 0.1);
+    border-radius: 15px;
+    padding: 2rem;
+}
+
+.details-section h4 {
+    color: #2193b0;
+    margin-bottom: 1.5rem;
+}
+
+.details-section ul li {
+    margin-bottom: 0.8rem;
+}
+
+.details-section ul li strong {
+    color: #2c3e50;
+    margin-right: 0.5rem;
+}
+</style>
+{% endblock %} 
